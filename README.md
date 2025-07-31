@@ -2,7 +2,7 @@
 
 This is a Scholarship Finder Desktop Application built using HTML, CSS, JavaScript, PHP, MySQL, and packaged as a desktop app using PyQt. It helps students discover scholarships they are eligible for based on their academic and personal profile.
 
-📌 Features
+#  Features
 1. User Registration & Login
 
 2. Profile Management – includes name, marks, caste, income, admission type, parent occupation, gender, class, and photo upload.
@@ -13,7 +13,7 @@ This is a Scholarship Finder Desktop Application built using HTML, CSS, JavaScri
 
 5. Desktop Version – runs locally as a desktop app using PyQt and XAMPP.
 
-🏗️ Tech Stack
+# Tech Stack
 
 Frontend	: HTML, CSS, JavaScript
 Backend	  : PHP
@@ -21,7 +21,9 @@ Database	: MySQL (via XAMPP)
 Desktop UI:	PyQt (Python)
 Hosting   :	Localhost (XAMPP)
 
-🖥️ How It Works:
+
+# How It Works:
+
 User Registration – New users can register with name, email, and password.
 
 Login – Registered users log in using credentials.
@@ -32,7 +34,10 @@ Browse Scholarships – Based on profile data, the system displays eligible scho
 
 Logout – Securely exit the application.
 
-🚀 How to Run:
+
+
+# How to Run:
+
 Install XAMPP and start Apache & MySQL.
 
 Import the SQL file (user_database.sql) into phpMyAdmin.
