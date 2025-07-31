@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home</title>
+   <!-- Custom CSS file link -->
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+<div class="container">
+   <div class="profile">
+      <?php
+         include 'config.php';
+         session_start();
+         
+         // Validate session and redirect if not logged in
+         if (!isset($_SESSION['user_id'])) {
+             header('location:login.php');
+             exit();
+         }
+         
+         $user_id = $_SESSION['user_id'];
+
+         // Logout functionality
+         if (isset($_GET['logout'])) {
+             unset($_SESSION['user_id']);
+             session_destroy();
+             header('location:login.php');
+             exit();
+         }
+
+         // Fetch user details from the database
+         $query = "SELECT * FROM `user_form` WHERE id = '$user_id'";
+         $select = mysqli_query($conn, $query) or die('Query failed');
+
+         if (mysqli_num_rows($select) > 0) {
+             $fetch = mysqli_fetch_assoc($select);
+         }
+
+         // Display user image or default avatar
+         $imagePath = $fetch['image'] ? 'uploaded_img/' . $fetch['image'] : 'images/default-avatar.png';
+         echo "<img src='$imagePath' alt='User Avatar'>";
+      ?>
+      
+      <!-- Display user name -->
+      <h3><?php echo htmlspecialchars($fetch['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
+      
+      <!-- Update profile button -->
+      <a href="update_profile.php" class="btn">Update Profile</a>
+      
+      <!-- Logout button -->
+      <a href="home.php?logout=true" class="delete-btn">Logout</a>
+      
+      <!-- Login or Register links -->
+      <p>New? <a href="login.php">Login</a> or <a href="register.php">Register</a></p>
+   </div>
+</div>
+
+</body>
+</html>
